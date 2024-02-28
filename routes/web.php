@@ -26,3 +26,7 @@ Route::get('/personas', function()
 {
    return View::make('personas');
 });
+Route::get('/estudiantes', function()
+{
+   return View::make('estudiantes');
+});

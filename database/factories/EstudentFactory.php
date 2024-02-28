@@ -1,16 +1,20 @@
 <?php
 
 namespace Database\Factories;
-
+use App\Models\Estudent;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Persona;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Persona>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Estudent>
  */
-class PersonaFactory extends Factory
+class EstudentFactory extends Factory
 {
-    protected $model = Persona::class;
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    protected $model = Estudent::class;
     public function definition(): array
     {
         return [

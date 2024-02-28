@@ -13,7 +13,10 @@ class Personas extends Component
     use WithPagination;
     public bool $deletePersonaModal = false;
     public $nombre, $apellido, $persona_id, $search;
-    public $updateMode = false;
+    public $updateModal = false;
+    public $deleteModal = false;
+    public $createModal = false;
+    public $persona;
     public $confirmingItemDeletion = false;
     public function confirmItemDeletion( $id) 
     {
@@ -60,7 +63,7 @@ class Personas extends Component
 
     public function cancel()
     {
-        $this->updateMode = false;
+        $this->updateModal = false;
         $this->resetInputFields();
     }
 
@@ -77,15 +80,22 @@ class Personas extends Component
             'apellido' => $this->apellido,
         ]);
   
-        $this->updateMode = false;
+        $this->updateModal = false;
   
         session()->flash('message', 'Persona Updated Successfully.');
         $this->resetInputFields();
+    }
+    public function remove($p)
+    {
+        $this->deleteModal = true;
+        $this->persona = $p;
+        $this->dispatch(('delete-modal'));
+        
     }
 
     public function delete($id)
     {
         Persona::find($id)->delete();
-        session()->flash('message', 'Post Deleted Successfully.');
+        session()->flash('message', 'Registro eliminado.!');
     }
 }
